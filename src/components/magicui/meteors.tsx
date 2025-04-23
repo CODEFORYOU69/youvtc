@@ -1,89 +1,60 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import * as React from "react";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
-export interface MeteorsProps extends React.HTMLAttributes<HTMLDivElement> {
+interface MeteorsProps {
   number?: number;
+  minDelay?: number;
+  maxDelay?: number;
+  minDuration?: number;
+  maxDuration?: number;
+  angle?: number;
   className?: string;
-  color?: string;
-}
-
-interface MeteorProps {
-  size: number;
-  top: number;
-  left: number;
-  animationDuration: number;
-  animationDelay: number;
-  color: string;
 }
 
 export const Meteors = ({
   number = 20,
+  minDelay = 0.2,
+  maxDelay = 1.2,
+  minDuration = 2,
+  maxDuration = 10,
+  angle = 215,
   className,
-  color = "var(--accent)",
-  ...props
 }: MeteorsProps) => {
-  // Utiliser useState pour stocker les météores
-  const [meteors, setMeteors] = useState<MeteorProps[]>([]);
+  const [meteorStyles, setMeteorStyles] = useState<Array<React.CSSProperties>>(
+    [],
+  );
 
-  // Générer les météores uniquement côté client avec useEffect
   useEffect(() => {
-    const generatedMeteors = Array.from({ length: number }).map(() => ({
-      size: Math.floor(Math.random() * 3) + 1,
-      top: Math.floor(Math.random() * 100),
-      left: Math.floor(Math.random() * 100),
-      animationDuration: Math.floor(Math.random() * 10) + 5,
-      animationDelay: Math.floor(Math.random() * 10),
-      color,
+    const styles = [...new Array(number)].map(() => ({
+      "--angle": -angle + "deg",
+      top: "-5%",
+      left: `calc(0% + ${Math.floor(Math.random() * window.innerWidth)}px)`,
+      animationDelay: Math.random() * (maxDelay - minDelay) + minDelay + "s",
+      animationDuration:
+        Math.floor(Math.random() * (maxDuration - minDuration) + minDuration) +
+        "s",
     }));
-
-    setMeteors(generatedMeteors);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [number]); // Dépendance sur number uniquement pour éviter de regénérer à chaque rendu
+    setMeteorStyles(styles);
+  }, [number, minDelay, maxDelay, minDuration, maxDuration, angle]);
 
   return (
-    <div
-      className={cn(
-        "absolute inset-0 overflow-hidden pointer-events-none",
-        className
-      )}
-      {...props}
-    >
-      {meteors.map((meteor, idx) => (
+    <>
+      {[...meteorStyles].map((style, idx) => (
+        // Meteor Head
         <span
           key={idx}
-          className="absolute w-px h-[100px] block rotate-[35deg]"
-          style={{
-            top: `${meteor.top}%`,
-            left: `${meteor.left}%`,
-            width: `${meteor.size}px`,
-            boxShadow: `0 0 ${meteor.size * 8}px ${meteor.size * 2}px ${
-              meteor.color
-            }`,
-            animationDuration: `${meteor.animationDuration}s`,
-            animationDelay: `${meteor.animationDelay}s`,
-            animation: "meteor linear infinite",
-          }}
-        />
+          style={{ ...style }}
+          className={cn(
+            "pointer-events-none absolute size-0.5 rotate-[var(--angle)] animate-meteor rounded-full bg-zinc-500 shadow-[0_0_0_1px_#ffffff10]",
+            className,
+          )}
+        >
+          {/* Meteor Tail */}
+          <div className="pointer-events-none absolute top-1/2 -z-10 h-px w-[50px] -translate-y-1/2 bg-gradient-to-r from-zinc-500 to-transparent" />
+        </span>
       ))}
-
-      <style jsx>{`
-        @keyframes meteor {
-          0% {
-            transform: rotate(35deg) translateX(0);
-            opacity: 1;
-          }
-          70% {
-            opacity: 1;
-          }
-          100% {
-            transform: rotate(35deg) translateX(-500px);
-            opacity: 0;
-          }
-        }
-      `}</style>
-    </div>
+    </>
   );
 };

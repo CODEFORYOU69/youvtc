@@ -3,75 +3,77 @@
 import { cn } from "@/lib/utils";
 import * as React from "react";
 
-interface ShineBorderProps extends React.HTMLAttributes<HTMLDivElement> {
+interface ShineBorderProps {
   children: React.ReactNode;
+  isHovering?: boolean;
   className?: string;
-  borderWidth?: number;
-  shine?: boolean;
-  shineStrength?: number;
-  borderRadius?: string;
-  background?: string;
+  shimmerClassName?: string;
+  shimmerSize?: string;
+  shimmerDuration?: number;
+  borderWidth?: string;
+  radius?: number;
+  wrapperClassName?: string;
   shimmerColor?: string;
+  borderRadius?: string;
 }
 
-export const ShineBorder = ({
+/**
+ * Shine Border
+ *
+ * An animated background border effect component with configurable properties.
+ */
+export function ShineBorder({
   children,
+  isHovering = false,
   className,
-  borderWidth = 1,
-  shine = true,
-  shineStrength = 0.5,
-  borderRadius = "0.5rem",
-  background = "hsl(var(--accent)/0.1)",
-  shimmerColor = "hsl(var(--accent)/0.3)",
-  ...props
-}: ShineBorderProps) => {
+  shimmerClassName,
+  shimmerSize = "150%",
+  shimmerDuration = 5,
+  borderWidth = "1px",
+  radius = 8,
+  wrapperClassName,
+  shimmerColor = "hsl(0 0% 100% / 0.2)",
+  borderRadius,
+}: ShineBorderProps) {
   return (
     <div
-      className={cn("relative group overflow-hidden", className)}
-      style={{
-        padding: borderWidth,
-        borderRadius: borderRadius,
-      }}
-      {...props}
-    >
-      {/* Shimmer effect */}
-      {shine && (
-        <div
-          className="absolute inset-0 z-[1] overflow-hidden"
-          style={{
-            borderRadius,
-            background,
-          }}
-        >
-          <div
-            className="absolute inset-0 z-[1] opacity-0 group-hover:opacity-100 transition-opacity duration-1000"
-            style={{
-              background: `linear-gradient(90deg, transparent, ${shimmerColor}, transparent)`,
-              transform: "translateX(-100%)",
-              animation: "shimmer 2s infinite",
-            }}
-          />
-        </div>
+      className={cn(
+        "group relative overflow-hidden rounded-md p-[1px]",
+        wrapperClassName
       )}
-
-      {/* Content */}
+      style={{
+        borderRadius,
+        padding: borderWidth,
+      }}
+    >
       <div
-        className="relative z-[2] rounded-sm w-full h-full"
+        className={cn("absolute inset-0 overflow-hidden", shimmerClassName)}
         style={{
-          background: "var(--background)",
-          borderRadius: `calc(${borderRadius} - ${borderWidth}px)`,
+          borderRadius: borderRadius || `${radius}px`,
+        }}
+      >
+        <div
+          className={cn(
+            "absolute inset-[-100%] animate-[spin_4s_linear_infinite]",
+            isHovering && "opacity-100",
+            !isHovering && "opacity-0",
+            "transition-opacity duration-500"
+          )}
+          style={{
+            background: `conic-gradient(from 0deg, transparent 0 210deg, ${shimmerColor} 240deg 300deg, transparent)`,
+            animationDuration: `${shimmerDuration}s`,
+            backgroundSize: shimmerSize,
+          }}
+        />
+      </div>
+      <div
+        className={cn("relative z-10", className)}
+        style={{
+          borderRadius: borderRadius || `calc(${radius}px - 1px)`,
         }}
       >
         {children}
       </div>
-
-      <style jsx>{`
-        @keyframes shimmer {
-          100% {
-            transform: translateX(100%);
-          }
-        }
-      `}</style>
     </div>
   );
-};
+}

@@ -1,66 +1,129 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import React from "react";
+import { motion, MotionStyle, Transition } from "motion/react";
 
 interface BorderBeamProps {
-  className?: string;
-  containerClassName?: string;
-  children: React.ReactNode;
+  /**
+   * The size of the border beam.
+   */
   size?: number;
+  /**
+   * The duration of the border beam.
+   */
   duration?: number;
-  borderWidth?: number;
-  yOffset?: number;
-  hideBeam?: boolean;
+  /**
+   * The delay of the border beam.
+   */
+  delay?: number;
+  /**
+   * The color of the border beam from.
+   */
   colorFrom?: string;
+  /**
+   * The color of the border beam to.
+   */
   colorTo?: string;
+  /**
+   * The motion transition of the border beam.
+   */
+  transition?: Transition;
+  /**
+   * The class name of the border beam.
+   */
+  className?: string;
+  /**
+   * The style of the border beam.
+   */
+  style?: React.CSSProperties;
+  /**
+   * Whether to reverse the animation direction.
+   */
+  reverse?: boolean;
+  /**
+   * The initial offset position (0-100).
+   */
+  initialOffset?: number;
+  /**
+   * The children elements.
+   */
+  children?: React.ReactNode;
+  /**
+   * The container class name.
+   */
+  containerClassName?: string;
+  /**
+   * Whether to hide the beam.
+   */
+  hideBeam?: boolean;
+  /**
+   * The y-offset of the beam.
+   */
+  yOffset?: number;
+  /**
+   * The border width.
+   */
+  borderWidth?: number;
 }
 
 export const BorderBeam = ({
   className,
-  containerClassName,
+  size = 50,
+  delay = 0,
+  duration = 6,
+  colorFrom = "#ffaa40",
+  colorTo = "#9c40ff",
+  transition,
+  style,
+  reverse = false,
+  initialOffset = 0,
   children,
-  duration = 2,
-  size = 150,
-  borderWidth = 1,
-  yOffset = 100,
+  containerClassName,
   hideBeam = false,
-  colorFrom,
-  colorTo,
+  yOffset = 0,
+  borderWidth = 1,
 }: BorderBeamProps) => {
-  const gradientColors =
-    colorFrom && colorTo
-      ? `from-[${colorFrom}] via-transparent to-[${colorTo}]`
-      : "from-transparent via-neutral-100 dark:via-neutral-950 to-transparent";
-
   return (
-    <div className={cn("relative", containerClassName)}>
-      <div
-        style={{
-          borderWidth: `${borderWidth}px`,
-        }}
-        className={cn(
-          "border border-neutral-200 dark:border-neutral-800 rounded-lg p-4 relative",
-          className
-        )}
-      >
-        {!hideBeam && (
-          <div
-            style={{
-              width: `${size}%`,
-              height: `${size}%`,
-              filter: "blur(100px)",
-              animation: `beam ${duration}s ease-in-out infinite`,
-              top: `${yOffset}%`,
-            }}
+    <div className={cn("relative rounded-[inherit]", containerClassName)}>
+      {children}
+
+      {!hideBeam && (
+        <div
+          className="pointer-events-none absolute inset-0 rounded-[inherit] border border-transparent [mask-clip:padding-box,border-box] [mask-composite:intersect] [mask-image:linear-gradient(transparent,transparent),linear-gradient(#000,#000)]"
+          style={{ borderWidth }}
+        >
+          <motion.div
             className={cn(
-              "absolute inset-x-0 bg-gradient-to-r -z-10",
-              gradientColors
+              "absolute aspect-square",
+              "bg-gradient-to-l from-[var(--color-from)] via-[var(--color-to)] to-transparent",
+              className
             )}
+            style={
+              {
+                width: size,
+                offsetPath: `rect(0 auto auto 0 round ${size}px)`,
+                "--color-from": colorFrom,
+                "--color-to": colorTo,
+                transform: `translateY(${yOffset}px)`,
+                ...style,
+              } as MotionStyle
+            }
+            initial={{ offsetDistance: `${initialOffset}%` }}
+            animate={{
+              offsetDistance: reverse
+                ? [`${100 - initialOffset}%`, `${-initialOffset}%`]
+                : [`${initialOffset}%`, `${100 + initialOffset}%`],
+            }}
+            transition={{
+              repeat: Infinity,
+              ease: "linear",
+              duration,
+              delay: -delay,
+              ...transition,
+            }}
           />
-        )}
-        {children}
-      </div>
+        </div>
+      )}
     </div>
   );
 };
