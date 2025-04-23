@@ -1,26 +1,244 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-sans);
+  --font-serif: var(--font-serif);
+  --font-display: var(--font-display);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  --radius: 0.625rem;
+
+  /* Palette de couleurs personnalisée */
+  --background: #0f172a; /* bleu nuit */
+  --foreground: #f8fafc; /* blanc cassé */
+
+  --card: #e5e7eb; /* gris perle */
+  --card-foreground: #0f172a; /* bleu nuit */
+
+  --popover: #f8fafc; /* blanc cassé */
+  --popover-foreground: #0f172a; /* bleu nuit */
+
+  --primary: #60a5fa; /* bleu glacier */
+  --primary-foreground: #0f172a; /* bleu nuit */
+
+  --secondary: #e5e7eb; /* gris perle */
+  --secondary-foreground: #0f172a; /* bleu nuit */
+
+  --muted: #e5e7eb; /* gris perle */
+  --muted-foreground: #64748b; /* gris foncé (ajouté) */
+
+  --accent: #d4af37; /* or doux */
+  --accent-foreground: #0f172a; /* bleu nuit */
+
+  --destructive: #ef4444; /* rouge */
+
+  --border: #e5e7eb; /* gris perle */
+  --input: #e5e7eb; /* gris perle */
+  --ring: #60a5fa; /* bleu glacier */
+
+  --chart-1: #60a5fa; /* bleu glacier */
+  --chart-2: #d4af37; /* or doux */
+  --chart-3: #e5e7eb; /* gris perle */
+  --chart-4: #64748b; /* gris foncé (ajouté) */
+  --chart-5: #0f172a; /* bleu nuit */
+
+  --sidebar: #0f172a; /* bleu nuit */
+  --sidebar-foreground: #f8fafc; /* blanc cassé */
+  --sidebar-primary: #60a5fa; /* bleu glacier */
+  --sidebar-primary-foreground: #0f172a; /* bleu nuit */
+  --sidebar-accent: #d4af37; /* or doux */
+  --sidebar-accent-foreground: #0f172a; /* bleu nuit */
+  --sidebar-border: #1e293b; /* bleu nuit plus clair (ajouté) */
+  --sidebar-ring: #60a5fa; /* bleu glacier */
+}
+
+.dark {
+  --background: #0f172a; /* bleu nuit */
+  --foreground: #f8fafc; /* blanc cassé */
+
+  --card: #1e293b; /* bleu nuit plus clair (ajouté) */
+  --card-foreground: #f8fafc; /* blanc cassé */
+
+  --popover: #1e293b; /* bleu nuit plus clair (ajouté) */
+  --popover-foreground: #f8fafc; /* blanc cassé */
+
+  --primary: #60a5fa; /* bleu glacier */
+  --primary-foreground: #0f172a; /* bleu nuit */
+
+  --secondary: #1e293b; /* bleu nuit plus clair (ajouté) */
+  --secondary-foreground: #f8fafc; /* blanc cassé */
+
+  --muted: #1e293b; /* bleu nuit plus clair (ajouté) */
+  --muted-foreground: #94a3b8; /* gris clair (ajouté) */
+
+  --accent: #d4af37; /* or doux */
+  --accent-foreground: #0f172a; /* bleu nuit */
+
+  --destructive: #ef4444; /* rouge */
+
+  --border: #1e293b; /* bleu nuit plus clair (ajouté) */
+  --input: #1e293b; /* bleu nuit plus clair (ajouté) */
+  --ring: #60a5fa; /* bleu glacier */
+
+  --chart-1: #60a5fa; /* bleu glacier */
+  --chart-2: #d4af37; /* or doux */
+  --chart-3: #e5e7eb; /* gris perle */
+  --chart-4: #94a3b8; /* gris clair (ajouté) */
+  --chart-5: #f8fafc; /* blanc cassé */
+
+  --sidebar: #0f172a; /* bleu nuit */
+  --sidebar-foreground: #f8fafc; /* blanc cassé */
+  --sidebar-primary: #60a5fa; /* bleu glacier */
+  --sidebar-primary-foreground: #0f172a; /* bleu nuit */
+  --sidebar-accent: #d4af37; /* or doux */
+  --sidebar-accent-foreground: #0f172a; /* bleu nuit */
+  --sidebar-border: #1e293b; /* bleu nuit plus clair (ajouté) */
+  --sidebar-ring: #60a5fa; /* bleu glacier */
+
+  /* Animation variables */
+  --meteor-color: #60a5fa;
+  --meteor-size: 2px;
+  --meteor-trail: 80px;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Polices Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@300;400;500;600;700&display=swap");
+
+/* Variables de polices */
+:root {
+  --font-sans: "Manrope", system-ui, sans-serif;
+  --font-serif: "DM Serif Display", Georgia, serif;
+  --font-display: "DM Serif Display", Georgia, serif;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+h4,
+h5,
+h6 {
+  font-family: var(--font-serif);
+  font-weight: 600;
+}
+
+p,
+span,
+button,
+a,
+input,
+textarea,
+select,
+li {
+  font-family: var(--font-sans);
+}
+
+/* Animations pour magic UI */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes marquee-reverse {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes meteor {
+  0% {
+    transform: rotate(35deg) translateX(0);
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(35deg) translateX(-500px);
+    opacity: 0;
+  }
+}
+
+.animate-marquee {
+  animation: marquee 25s linear infinite;
+}
+
+.animate-marquee-reverse {
+  animation: marquee-reverse 25s linear infinite;
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite;
+}
+
+.animate-meteor {
+  animation: meteor 5s linear infinite;
 }
