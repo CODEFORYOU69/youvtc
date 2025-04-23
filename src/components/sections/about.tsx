@@ -78,7 +78,7 @@ export function AboutSection() {
                 </Button>
                 <Button variant="outline" size="icon" asChild>
                   <Link
-                    href="https://portfolio.younesouasmi.fr"
+                    href="https://younesouasmi.com"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -107,32 +107,29 @@ export function AboutSection() {
                     créant des solutions numériques innovantes.
                   </p>
                   <h4 className="mb-2 text-lg font-semibold">
-                    Compétences techniques
+                    Mes compétences
                   </h4>
                   <div className="mb-4 flex flex-wrap gap-2">
                     <span className="rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
-                      Next.js
+                      App Mobile
                     </span>
                     <span className="rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
-                      React
+                      Web app
                     </span>
                     <span className="rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
-                      TailwindCSS
+                      Application Métier
                     </span>
                     <span className="rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
-                      TypeScript
-                    </span>
-                    <span className="rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
-                      Node.js
+                      Projet Personnel ou Pro
                     </span>
                     <span className="rounded-full bg-accent/10 px-3 py-1 text-xs font-medium text-accent">
-                      UI/UX Design
+                      Freelance
                     </span>
                     <span className="rounded-full bg-accent/10 px-3 py-1 text-xs font-medium text-accent">
-                      Responsive
+                      A l&apos;écoute du client
                     </span>
                     <span className="rounded-full bg-accent/10 px-3 py-1 text-xs font-medium text-accent">
-                      Accessibilité
+                      Accessible
                     </span>
                   </div>
                   <div className="flex justify-center md:justify-start">
@@ -141,7 +138,7 @@ export function AboutSection() {
                       className="bg-primary text-primary-foreground hover:bg-primary/90"
                     >
                       <Link
-                        href="https://portfolio.younesouasmi.fr"
+                        href="https://younesouasmi.com"
                         target="_blank"
                         rel="noopener noreferrer"
                       >

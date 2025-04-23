@@ -109,7 +109,7 @@ export default function AdminPage() {
       setQrBackgroundColor("#E5E7EB");
       setQrForegroundColor("#0F172A");
     } else if (template === "business") {
-      setQrValue("https://portfolio.younesouasmi.fr");
+      setQrValue("https://younesouasmi.com");
       setQrName("Carte de visite");
       setCardTitle("Younes Ouasmi");
       setCardDescription("Chauffeur VTC & Développeur Web");

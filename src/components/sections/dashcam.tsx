@@ -23,35 +23,37 @@ import {
 
 export function DashcamSection() {
   return (
-    <section id="dashcam" className="relative overflow-hidden py-16 md:py-28">
+    <section id="dashcam" className="relative overflow-hidden py-10 md:py-28">
       {/* Background gradient */}
       <div className="absolute top-0 left-0 right-0 h-80 bg-gradient-to-b from-background to-transparent opacity-80" />
       <div className="absolute inset-0 bg-background/80" />
 
-      <div className="container px-4 md:px-6 relative z-10">
-        <BlurFade className="mb-12 text-center">
+      <div className="container px-3 md:px-6 relative z-10">
+        <BlurFade className="mb-8 md:mb-12 text-center">
           <BorderBeam
             colorFrom="var(--accent)"
             colorTo="var(--primary)"
-            className="inline-block mb-8 rounded-xl"
+            className="inline-block mb-4 md:mb-8 rounded-xl"
           >
-            <div className="mb-0 bg-background/80 px-6 py-4 backdrop-blur-sm rounded-xl flex items-center justify-center">
-              <IconCamera className="h-8 w-8 mr-4 text-accent" />
-              <h2 className="text-2xl font-bold">Souriez, vous êtes filmés</h2>
+            <div className="mb-0 bg-background/80 px-4 py-3 md:px-6 md:py-4 backdrop-blur-sm rounded-xl flex items-center justify-center">
+              <IconCamera className="h-6 w-6 md:h-8 md:w-8 mr-2 md:mr-4 text-accent" />
+              <h2 className="text-lg md:text-2xl font-bold">
+                Souriez, vous êtes filmés
+              </h2>
             </div>
           </BorderBeam>
 
-          <h3 className="mb-6 text-4xl font-bold tracking-tight md:text-5xl">
+          <h3 className="mb-4 md:mb-6 text-2xl md:text-4xl font-bold tracking-tight ">
             <span className="text-primary">Bienvenue</span> à bord de YouVTC
           </h3>
 
-          <div className="mx-auto max-w-[800px] text-muted-foreground space-y-4">
-            <p className="text-lg italic">
+          <div className="mx-auto max-w-[800px] text-muted-foreground space-y-3 md:space-y-4 text-sm md:text-base">
+            <p className="md:text-lg italic">
               Installez-vous confortablement, détendez-vous… et laissez-moi vous
               conduire en toute sérénité.
             </p>
 
-            <p className="text-lg">
+            <p className="md:text-lg">
               Je vous propose des trajets dans une voiture spacieuse,
               silencieuse et éco-responsable, où la conduite est douce comme un
               dimanche matin. Que vous alliez à la gare, à l&apos;aéroport ou
@@ -59,7 +61,7 @@ export function DashcamSection() {
               m&apos;adapte à vos besoins avec le sourire. 😄
             </p>
 
-            <p className="text-lg">
+            <p className="md:text-lg">
               Vous êtes plutôt bavard ? Ou plutôt calme ? On s&apos;adapte aussi
               !<br />
               N&apos;hésitez pas à discuter ou à poser toutes vos questions — je

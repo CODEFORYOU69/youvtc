@@ -15,55 +15,55 @@ export function HeroSection() {
   return (
     <section
       id="home"
-      className="relative py-8 md:py-16 bg-background overflow-hidden"
+      className="relative py-4 md:py-16 bg-background overflow-hidden"
     >
-      <div className="container px-4 md:px-6">
+      <div className="container px-2 md:px-6">
         {/* Version mobile - Structure simplifiée et verticale */}
-        <div className="flex flex-col gap-8 md:hidden">
+        <div className="flex flex-col gap-4 md:hidden">
           {/* Titre et texte */}
-          <div className="text-center pt-4">
-            <h1 className="text-4xl font-bold mb-4">
+          <div className="text-center pt-2">
+            <h1 className="text-3xl font-bold mb-2">
               <span className="text-primary">YouVTC</span>
             </h1>
-            <div className="my-4">
+
+            <div className="my-2 max-w-full overflow-hidden">
               <VelocityScroll
                 defaultVelocity={2}
                 numRows={1}
-                className="text-2xl"
+                className="text-xl"
               >
-                🚗 Bienvenue à bord de YouVTC Installez-vous confortablement,
-                détendez-vous… et laissez-moi vous conduire en toute sérénité.
+                vos trajets en toute tranquillité
               </VelocityScroll>
             </div>
 
-            <div className="flex flex-col gap-3 mb-6">
+            <div className="flex flex-col gap-2 my-4">
               <Button
                 asChild
                 className="bg-primary text-primary-foreground hover:bg-primary/90 w-full"
-                size="lg"
+                size="default"
               >
                 <Link href="/#contact">Réserver maintenant</Link>
               </Button>
 
-              <Button asChild variant="outline" size="lg">
+              <Button asChild variant="outline" size="default">
                 <Link href="/#dashcam">En savoir plus</Link>
               </Button>
             </div>
           </div>
 
-          {/* Photo et voiture */}
-          <div className="flex items-center justify-center gap-2 mb-4">
-            <div className="h-[120px] w-[160px]">
+          {/* Photo et voiture - version plus compacte */}
+          <div className="flex items-center justify-center gap-2 mb-2 scale-90 origin-center">
+            <div className="h-[100px] w-[140px]">
               <Image
                 src="/images/hero-image.jpg"
                 alt="Ma voiture VTC"
-                width={160}
-                height={120}
+                width={140}
+                height={100}
                 className="object-cover rounded-lg shadow-lg"
               />
             </div>
 
-            <div className="relative h-40 w-40">
+            <div className="relative h-[100px] w-[100px]">
               <Image
                 src="/images/profile.jpg"
                 alt="YouVTC Logo"
