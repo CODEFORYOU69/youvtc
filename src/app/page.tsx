@@ -5,7 +5,7 @@ import { DashcamSection } from "@/components/sections/dashcam";
 import { HeroSection } from "@/components/sections/hero";
 import { Header } from "@/components/ui/header";
 import { IconBrandGithub } from "@tabler/icons-react";
-
+import Image from "next/image";
 export default function Home() {
   const currentYear = new Date().getFullYear();
 
@@ -22,11 +22,16 @@ export default function Home() {
             <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
               <div className="flex flex-col items-center gap-2 md:items-start">
                 <div className="flex items-center space-x-2">
-                  <div className="relative flex h-7 w-7 items-center justify-center rounded-full bg-primary">
-                    <div className="absolute h-5 w-5 rounded-full bg-background"></div>
-                    <div className="absolute h-3 w-3 rounded-full bg-accent"></div>
-                  </div>
-                  <span className="text-lg font-bold">
+                  <span className="relative flex h-8 w-8 items-center justify-center">
+                    <Image
+                      src="/images/logo.jpg"
+                      alt="YouVTC Logo"
+                      width={32}
+                      height={32}
+                      className="rounded-full object-cover"
+                    />
+                  </span>
+                  <span className="ml-2 text-xl font-bold text-foreground">
                     You<span className="text-primary">VTC</span>
                   </span>
                 </div>

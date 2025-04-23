@@ -42,15 +42,46 @@ export function DashcamSection() {
           </BorderBeam>
 
           <h3 className="mb-6 text-4xl font-bold tracking-tight md:text-5xl">
-            Système d&apos;
-            <span className="text-primary">enregistrement vidéo</span> embarqué
+            <span className="text-primary">Bienvenue</span> à bord de YouVTC
           </h3>
 
-          <p className="mx-auto max-w-[800px] text-muted-foreground text-lg">
-            Conformément à la réglementation en vigueur, nous vous informons que
-            ce véhicule est équipé d&apos;un système d&apos;enregistrement vidéo
-            pour votre sécurité et la nôtre.
-          </p>
+          <div className="mx-auto max-w-[800px] text-muted-foreground space-y-4">
+            <p className="text-lg italic">
+              Installez-vous confortablement, détendez-vous… et laissez-moi vous
+              conduire en toute sérénité.
+            </p>
+
+            <p className="text-lg">
+              Je vous propose des trajets dans une voiture spacieuse,
+              silencieuse et éco-responsable, où la conduite est douce comme un
+              dimanche matin. Que vous alliez à la gare, à l&apos;aéroport ou
+              que vous partiez à l&apos;aventure pour un long trajet, je
+              m&apos;adapte à vos besoins avec le sourire. 😄
+            </p>
+
+            <p className="text-lg">
+              Vous êtes plutôt bavard ? Ou plutôt calme ? On s&apos;adapte aussi
+              !<br />
+              N&apos;hésitez pas à discuter ou à poser toutes vos questions — je
+              suis toujours ravi d&apos;échanger.
+            </p>
+
+            <div className="mt-6 bg-accent/5 p-4 rounded-lg">
+              <p className="font-medium text-lg mb-2">
+                📹 Et la vidéo dans tout ça ?
+              </p>
+              <p>
+                Pour votre sécurité comme pour la mienne, un dispositif
+                d&apos;enregistrement vidéo embarqué est activé durant le
+                trajet. C&apos;est discret, encadré par la loi, et uniquement à
+                but préventif.
+              </p>
+              <p className="mt-2">
+                👉 Toutes les infos sont juste en dessous si vous voulez en
+                savoir plus.
+              </p>
+            </div>
+          </div>
         </BlurFade>
 
         {/* Version mobile - Accordéon simple */}
@@ -107,7 +138,7 @@ export function DashcamSection() {
                     et d&apos;opposition concernant vos données personnelles.
                     Pour exercer ces droits ou pour toute question, vous pouvez
                     contacter le responsable du traitement à l&apos;adresse :
-                    contact@youvtc.fr
+                    y.ouasmi@gmail.com
                   </AccordionContent>
                 </AccordionItem>
 
@@ -282,7 +313,7 @@ export function DashcamSection() {
                           rectification et d&apos;opposition concernant vos
                           données personnelles. Pour exercer ces droits ou pour
                           toute question, vous pouvez contacter le responsable
-                          du traitement à l&apos;adresse : contact@youvtc.fr
+                          du traitement à l&apos;adresse : y.ouasmi@gmail.com
                         </AccordionContent>
                       </AccordionItem>
                     </Accordion>

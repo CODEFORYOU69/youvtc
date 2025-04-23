@@ -1,5 +1,6 @@
 "use client";
 
+import { VelocityScroll } from "@/components/magicui/scroll-based-velocity";
 import { Button } from "@/components/ui/button";
 import {
   IconCar,
@@ -9,7 +10,6 @@ import {
 } from "@tabler/icons-react";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 
 export function HeroSection() {
   return (
@@ -23,14 +23,18 @@ export function HeroSection() {
           {/* Titre et texte */}
           <div className="text-center pt-4">
             <h1 className="text-4xl font-bold mb-4">
-              Service <span className="text-primary">VTC</span> de{" "}
-              <span className="text-accent">confiance</span>
+              <span className="text-primary">YouVTC</span>
             </h1>
-
-            <p className="text-base text-muted-foreground mb-6">
-              Transport sécurisé et professionnel avec enregistrement vidéo pour
-              votre tranquillité d&apos;esprit.
-            </p>
+            <div className="my-4">
+              <VelocityScroll
+                defaultVelocity={2}
+                numRows={1}
+                className="text-2xl"
+              >
+                🚗 Bienvenue à bord de YouVTC Installez-vous confortablement,
+                détendez-vous… et laissez-moi vous conduire en toute sérénité.
+              </VelocityScroll>
+            </div>
 
             <div className="flex flex-col gap-3 mb-6">
               <Button
@@ -47,14 +51,24 @@ export function HeroSection() {
             </div>
           </div>
 
-          {/* Photo de profil avec style simplifié */}
-          <div className="flex justify-center mb-4">
-            <div className="relative w-40 h-40 rounded-full overflow-hidden border-4 border-primary/30">
+          {/* Photo et voiture */}
+          <div className="flex items-center justify-center gap-2 mb-4">
+            <div className="h-[120px] w-[160px]">
+              <Image
+                src="/images/hero-image.jpg"
+                alt="Ma voiture VTC"
+                width={160}
+                height={120}
+                className="object-cover rounded-lg shadow-lg"
+              />
+            </div>
+
+            <div className="relative h-40 w-40">
               <Image
                 src="/images/profile.jpg"
-                alt="Younes Ouasmi"
+                alt="YouVTC Logo"
                 fill
-                className="object-cover"
+                className="object-contain"
               />
             </div>
           </div>
@@ -84,15 +98,21 @@ export function HeroSection() {
         <div className="hidden md:grid md:grid-cols-2 md:gap-12 lg:gap-16 md:items-center">
           {/* Partie gauche - Texte et boutons */}
           <div className="flex flex-col space-y-8">
-            <h1 className="text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1]">
-              Service <span className="text-primary">VTC</span> de{" "}
-              <span className="text-accent">confiance</span>
-            </h1>
+            <div>
+              <h1 className="text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1]">
+                <span className="text-primary">YouVTC</span>
+              </h1>
 
-            <p className="max-w-[600px] text-muted-foreground text-lg">
-              Transport sécurisé et professionnel avec enregistrement vidéo pour
-              votre tranquillité d&apos;esprit.
-            </p>
+              <div className="mt-4">
+                <VelocityScroll
+                  defaultVelocity={3}
+                  numRows={1}
+                  className="text-3xl"
+                >
+                  vos trajets en toute tranquillité
+                </VelocityScroll>
+              </div>
+            </div>
 
             <div className="flex gap-4">
               <Button
@@ -128,34 +148,40 @@ export function HeroSection() {
             </div>
           </div>
 
-          {/* Partie droite - Photo de profil */}
+          {/* Partie droite - Photo et voiture */}
           <div className="flex items-center justify-center">
-            <div className="relative">
-              <div className="absolute inset-0 blur-3xl bg-gradient-to-br from-primary/20 via-accent/10 to-primary/20 rounded-full scale-95 opacity-70" />
+            <div className="flex items-center gap-8">
+              <div className="h-[250px] w-[300px]">
+                <Image
+                  src="/images/hero-image.jpg"
+                  alt="Ma voiture VTC"
+                  width={300}
+                  height={250}
+                  className="object-cover rounded-lg shadow-lg"
+                />
+              </div>
 
-              <div className="relative rounded-full border-2 border-border/50 bg-background/80 p-8 w-[360px] h-[360px] lg:w-[400px] lg:h-[400px] flex items-center justify-center">
-                <div className="text-center">
-                  <div className="mx-auto mb-6 relative">
-                    <div className="relative h-36 w-36 rounded-full overflow-hidden border-4 border-primary/30">
-                      <Image
-                        src="/images/profile.jpg"
-                        alt="Younes Ouasmi"
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
+              <div className="text-center">
+                <div className="mb-6">
+                  <div className="relative h-48 w-48">
+                    <Image
+                      src="/images/profile.jpg"
+                      alt="Younes Ouasmi"
+                      fill
+                      className="object-contain"
+                    />
                   </div>
+                </div>
 
-                  <h3 className="text-2xl font-bold mb-1">Younes Ouasmi</h3>
-                  <p className="text-muted-foreground">
-                    Votre chauffeur VTC professionnel
-                  </p>
+                <h3 className="text-2xl font-bold mb-1">Younes Ouasmi</h3>
+                <p className="text-muted-foreground">
+                  Votre chauffeur VTC professionnel
+                </p>
 
-                  <div className="mt-6 px-4 py-2 rounded-full bg-primary/10 inline-block">
-                    <span className="text-sm font-medium">
-                      Sécurité embarquée
-                    </span>
-                  </div>
+                <div className="mt-6 px-4 py-2 rounded-full bg-primary/10 inline-block">
+                  <span className="text-sm font-medium">
+                    Sécurité embarquée
+                  </span>
                 </div>
               </div>
             </div>

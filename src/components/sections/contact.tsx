@@ -242,17 +242,31 @@ END:VCARD`;
                         style={{ background: "#60a5fa" }}
                       ></div>
 
+                      {/* Image en filigrane à gauche */}
+                      <div className="absolute top-0 left-0 h-full w-1/2 pointer-events-none opacity-8 overflow-hidden">
+                        <Image
+                          src="/images/profile.jpg"
+                          alt=""
+                          fill
+                          className="object-cover"
+                          style={{
+                            objectPosition: "center",
+                            transform: "scale(1.2)",
+                          }}
+                        />
+                      </div>
+
                       <div className="relative z-10 flex h-full">
                         {/* Partie gauche - Informations */}
                         <div className="flex-1 flex flex-col justify-between pr-4">
                           <div>
-                            <div className="flex items-center gap-3 mb-3">
+                            <div className="flex items-center gap-2 mb-2">
                               <div
                                 className="h-10 w-10 rounded-full flex items-center justify-center overflow-hidden"
-                                style={{ background: "#60a5fa" }}
+                                style={{ background: "#e5e7eb" }}
                               >
                                 <Image
-                                  src="/images/profile.jpg"
+                                  src="/images/logo.jpg"
                                   alt="Younes Ouasmi"
                                   width={40}
                                   height={40}
@@ -274,7 +288,7 @@ END:VCARD`;
                             </p>
                           </div>
 
-                          <div className="space-y-2">
+                          <div className="space-y-1">
                             <p
                               className="text-sm font-medium"
                               style={{ color: "#1a202c" }}

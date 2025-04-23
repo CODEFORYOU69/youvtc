@@ -168,7 +168,7 @@ export function LegalSection() {
                     Pour toute question ou pour exercer vos droits (accès,
                     rectification, opposition, effacement), vous pouvez
                     contacter le responsable à l&apos;adresse :
-                    contact@youvtc.fr
+                    y.ouasmi@gmail.com
                   </p>
                 </div>
               </CardContent>

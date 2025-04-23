@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { IconMenu2, IconX } from "@tabler/icons-react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -21,9 +22,14 @@ export function Header() {
               transition={{ duration: 0.5 }}
               className="flex items-center"
             >
-              <span className="relative flex h-8 w-8 items-center justify-center rounded-full bg-primary">
-                <span className="absolute h-6 w-6 rounded-full bg-background"></span>
-                <span className="absolute h-4 w-4 rounded-full bg-accent"></span>
+              <span className="relative flex h-8 w-8 items-center justify-center">
+                <Image
+                  src="/images/logo.jpg"
+                  alt="YouVTC Logo"
+                  width={32}
+                  height={32}
+                  className="rounded-full object-cover"
+                />
               </span>
               <span className="ml-2 text-xl font-bold text-foreground">
                 You<span className="text-primary">VTC</span>
