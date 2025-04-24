@@ -29,7 +29,7 @@ export default function AdminPage() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [qrValue, setQrValue] = useState("https://youvtc.fr");
+  const [qrValue, setQrValue] = useState("https://");
   const [qrName, setQrName] = useState("Carte Passager");
   const [qrBackgroundColor, setQrBackgroundColor] = useState("#FFFFFF");
   const [qrForegroundColor, setQrForegroundColor] = useState("#000000");
@@ -100,11 +100,11 @@ export default function AdminPage() {
     setCardTemplate(template);
 
     if (template === "passenger") {
-      setQrValue("https://youvtc.fr/#dashcam");
+      setQrValue("https://youvtc.vercel.app");
       setQrName("Carte Passager");
-      setCardTitle("YouVTC - Dashcam embarquée");
+      setCardTitle("YouVTC");
       setCardDescription(
-        "Scannez ce QR code pour plus d'informations sur notre service VTC avec dashcam"
+        "Scannez ce QR code pour plus d'informations sur notre service VTC"
       );
       setQrBackgroundColor("#E5E7EB");
       setQrForegroundColor("#0F172A");
@@ -370,7 +370,7 @@ export default function AdminPage() {
                     className="mt-4 text-center text-sm opacity-80"
                     style={{ color: qrForegroundColor }}
                   >
-                    www.youvtc.fr
+                    www.youvtc.vercel.app
                   </div>
                 </div>
                 <div className="flex justify-center gap-4">
